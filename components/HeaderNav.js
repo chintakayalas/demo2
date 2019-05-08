@@ -5,8 +5,12 @@ import PropTypes from 'prop-types';
 
 export default class HeaderNav extends React.Component {
 
-  _onPressButton() {
-        this.props.onAnimate(200,400);
+  openSideBar() {
+        this.props.onAnimate(350,200);
+  }
+  closeSideBar()
+  {
+    this.props.onAnimate(0,200);
   }
 
   constructor(props)
@@ -20,16 +24,22 @@ export default class HeaderNav extends React.Component {
         <View style={{ flexDirection: 'column',  justifyContent:"space-evenly", margin:0}}>
             <View style={{height: "10%"}}>
               <View style={{ flexDirection: 'row',  height:"10%",  justifyContent:'flex-start'}}>
-                <TouchableHighlight onPress={this._onPressButton.bind(this)} style={{ width:"10%", height:50, backgroundColor: 'powderblue'}}>
+                <TouchableHighlight onPress={this.openSideBar.bind(this)} style={{ width:"10%", height:50, backgroundColor: 'powderblue'}}>
                   <View  style={{ width:"10%", height:50, backgroundColor: 'powderblue'}} >
-                    <Text style={{  textAlign:"center"}}>___</Text>
+                  
                   </View>
                 </TouchableHighlight>
-                <View style={{width: "80%", height: 50, backgroundColor: 'skyblue'}} >
+                <TouchableHighlight style={{width: "80%"}} onPress={this.closeSideBar.bind(this)}>
+                <View style={{width: "100%", height: 50, backgroundColor: 'skyblue'}} >
                   <Text style={{  textAlign:"center", fontSize:20, marginTop:10, fontWeight:"bold"}}>My Children</Text>
                 </View>
-                <View style={{width: "10%", height: 50, backgroundColor: 'steelblue'}} />
+                </TouchableHighlight>
+
+                <TouchableHighlight style={{width: "10%"}} onPress={this.closeSideBar.bind(this)}>
+                <View style={{width: "100%", height: 50, backgroundColor: 'steelblue'}} />
+                </TouchableHighlight>
               </View>
+              
             </View>
 
         </View>
